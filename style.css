@@ -1,0 +1,124 @@
+@import url('https://fonts.cdnfonts.com/css/bebas-neue');
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+body{
+    margin: 0;
+    font-size: 15px;
+    background-color: darkslategray;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+svg{
+    color: #fff;
+}
+
+:root{
+    --width-df: min(1200px, 90vw); /*variável para conter a largura padrão*/
+    --diameter: 1432px; /*Ele cria essa variável para o diametro da imagem se encaixar. o número foi tirado a partir do calculo 1200px^2 + 780px^2*/
+}
+
+.logo img{
+    width: 50px;
+}
+
+header{
+    width: var(--width-df);
+    height: 70px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+header .logo img{
+    width: 50px;
+}
+
+.slider{
+    color: #eee;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: -70px;
+    position: relative;
+}
+.slider .list .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slider .list .item .content{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: max-content;
+    display: grid;
+    grid-template-columns: repeat(2, 400px);
+    gap: 80px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-family: Poppins;
+    text-shadow: 0 0 80px #000;
+}
+
+.slider .list .item .content h2{
+    font-size: 10em;
+    font-family: 'Bebas Neue', sans-serif;
+    line-height: 0.9em;
+    grid-row-start: 1; /*onde a linha de um elemento deve começar no layout. O valor indica quantas linhas deve ocupar */
+    grid-row-end: 3; /*começa na linha um e ocupa até a linha 3*/
+}
+
+.slider .list .item .content p:last-child{
+    display: flex;
+    align-items: end;
+    padding-bottom: 25px;
+}
+
+.slider .list .item .image{
+    flex-shrink: 0; /*controla a capacidade de encolhimento do item flexível, se o valor é 0 significa que não deve encolher*/
+    width: var(--diameter);
+    height: var(--diameter);
+    background-image: var(--url);
+    background-size: var(--diameter) var(--diameter);
+    background-position: center;
+    border-radius: 50%;
+    position: relative;
+}
+
+.slider .list .item .image::before,
+.slider .list .item .image::after{
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    content: '';
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: 
+        linear-gradient(to right, #0004, #0004),
+        var(--url);
+    background-position: center;
+    background-size: var(--diameter) var(--diameter);
+}
+
+.slider .list .item .image::after{
+    width: 30%;
+    height: 30%;
+    background-image: var(--url);
+}
+
+.slider .list .content h2{
+    transform: translateY(-100%);
+    transition: transform 1s;
+}
