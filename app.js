@@ -1,9 +1,9 @@
-let items = document.querySelectorAll('.slider .item')
+let items = document.querySelectorAll('.slider .list .item')
 let prevBtn = document.getElementById('prev')
 let nextBtn = document.getElementById('next')
 let lastPosition = items.length - 1
 let firstPosition = 0
-let active = 1
+let active = 0
 
 nextBtn.onclick = () =>{
     active++
